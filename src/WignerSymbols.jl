@@ -1,5 +1,5 @@
 module WignerSymbols
 
-# package code goes here
+include("AuxiliaryWignerFunctions.jl")
 
 end # module

@@ -3,6 +3,17 @@
   relations of Wigner 3j and 6j symbols.
 =#
 
+function wig3jj_minmax(j2,j3,m1,m2,m3)
+  max(abs(j2-j3),abs(m2+m3)),j2+j3
+end
+
+function wig3jj_norm(jmin,jmax,fj::Array{AbstractFloat,1})
+  sum((2*(jmin+i-1)+1)*fj[i]^2 for i=1:(jmax-jmin))
+end
+
+function wig3jj_sign(j2,j3,m1,m2,m3)
+  (-1.0)^(j2-j3+m2+m3)
+
 function aux_A(j1,j2,j3,m1,m2,m3)
   sqrt((j1^2-(j2-j3^2)*(j2+j3+1)^2-j1^2)*(j1^2-(m2+m3)^2))
 end
