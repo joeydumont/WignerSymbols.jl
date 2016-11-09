@@ -5,7 +5,7 @@
 
 """
     recursive_evaluation(j2::Integer,j3::Integer,m1::Integer,m2::Integer,m3::Integer,
-                         aux_alpha, aux_beta,aux_minmax,aux_norm,aux_sign)
+                         aux_alpha, aux_beta,aux_minmax,aux_norm,aux_sign,aux_conditions)
 
   Compute a series of Wigner symbols using the recursive algorithm described in
    > J.H. Luscombe and M. Luban, *Simplified recursive algorithm for Wigner 3j and 6j symbols*,
@@ -26,8 +26,11 @@
   * `aux_minmax`:
   * `aux_norm`:
   * `aux_sign`:
+  * `aux_conditions`:
 """
-function recursive_evaluation(k1::Integer,k2::Integer,k3::Integer,k4::Integer,k5::Integer,
-                              aux_alpha,aux_beta,aux_minmax,aux_norm,aux_sign)
-  # Evaluation here.
+function recursive_evaluation{T<:AbstractFloat,S<:Integer}(k1::S,k2::S,k3::S,k4::S,k5::S,
+                              aux_alpha,aux_beta,aux_minmax,aux_norm,aux_sign,aux_conditions)
+  # Verify that some conditions are met on the coefficients.
+  if ! aux_conditions
+    return [0.0]
 end
